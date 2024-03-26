@@ -6,6 +6,7 @@ export const utilService = {
     saveToStorage,
     getRandomBoolean,
     generateRandomLabels,
+    formatDate,
     animateCSS,
     debounce
 }
@@ -31,6 +32,23 @@ function makeLorem(size = 100) {
     }
     return txt
 }
+
+function formatDate(timestamp) {
+
+    let date = new Date(timestamp);
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1; 
+    let year = date.getFullYear();
+
+
+    day = day < 10 ? '0' + day : day;
+    month = month < 10 ? '0' + month : month;
+    let formattedDate = `${day}/${month}/${year}`;
+
+    return formattedDate;
+}
+
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min)

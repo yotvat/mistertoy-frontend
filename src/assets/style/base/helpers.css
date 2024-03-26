@@ -4,6 +4,10 @@
   display: flex;
 }
 
+.flex.wrap{
+flex-wrap: wrap;
+}
+
 .flex.flex-column{
     flex-direction: column;
 }
@@ -14,6 +18,9 @@
 
 .flex.justify-between{
     justify-content: space-between;
+}
+.flex.justify-around{
+    justify-content: space-around;
 }
 
 .flex.align-center{

@@ -6,10 +6,6 @@ import { userService } from './user.service.js'
 const STORAGE_KEY = 'toyDB'
 
 _createToys()
-console.log('hi')
-const labels = [
-    'On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle',
-    'Outdoor', 'Battery Powered']
 
 export const toyService = {
     query,
@@ -17,24 +13,60 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getDefaultSort
 }
 
-function query(filterBy = {}) {
+function query(filterBy = {}, sortBy = {}) {
+
     return storageService.query(STORAGE_KEY)
         .then(toys => {
-            return toys
+            let toysToReturn = toys.slice()
+            //filter
+            if (filterBy.name) {
+
+                const regExp = new RegExp(filterBy.name, 'i')
+                toysToReturn = toysToReturn.filter(toy => regExp.test(toy.name))
+            }
+
+            if (filterBy.maxPrice) {
+                toysToReturn = toysToReturn.filter(toy => toy.price >= filterBy.maxPrice)
+            }
+            if (filterBy.inStock !== 'all') {
+                toysToReturn = toysToReturn.filter(toy => toy.inStock.toString() === filterBy.inStock)
+            }
+
+            //sort
+            if (sortBy.name) {
+                toysToReturn = toysToReturn.sort((t1, t2) => (t1.name.localeCompare(t2.name)) * sortBy.name)
+            }
+
+            if (sortBy.price) {
+                toysToReturn = toysToReturn.sort((t1, t2) => (t1.price - t2.price) * sortBy.price)
+            }
+            if (sortBy.created) {
+                toysToReturn = toysToReturn.sort((t1, t2) => (t1.createdAt - t2.created) * sortBy.price)
+            }
+
+            return toysToReturn
         })
 
     // .then(toys => {
-    //     if (!filterBy.txt) filterBy.txt = ''
+    //     return toys
+    // })
+
+    // .then(toys => {
+    //     if (!filterBy.name) filterBy.name = ''
     //     if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
     //     const regExp = new RegExp(filterBy.txt, 'i')
     //     return toys.filter(toy =>
-    //         regExp.test(toy.vendor) &&
+    //         regExp.test(toy.name) &&
     //         toy.price <= filterBy.maxPrice
     //     )
     // })
+
+
+
 }
 
 function getById(toyId) {
@@ -53,6 +85,7 @@ function save(toy) {
     } else {
         // when switching to backend - remove the next line
         toy.owner = userService.getLoggedinUser()
+        toy.createdAt = new Date()
         return storageService.post(STORAGE_KEY, toy)
     }
 }
@@ -60,7 +93,7 @@ function save(toy) {
 function getEmptyToy() {
     return {
         name: '',
-        price: null,
+        price: '',
         labels: [],
         createdAt: null,
         inStock: null
@@ -94,7 +127,10 @@ function _createToy(name = '') {
 }
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '' }
+    return { name: '', maxPrice: '', inStock: 'all' }
+}
+function getDefaultSort() {
+    return { name: 1 }
 }
 
 // TEST DATA

@@ -9,6 +9,7 @@ import { ToyIndex } from './pages/ToyIndex.jsx'
 import { ToyEdit } from './pages/ToyEdit.jsx'
 import { ToyDetails } from './pages/ToyDetails.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
+import { UserMsg } from './cmps/UserMsg.jsx'
 
 
 // import './App.css'
@@ -32,6 +33,7 @@ export function App() {
               {/* <Route element={<UserDetails />} path="/user/:userId" /> */}
             </Routes>
           </main>
+          <UserMsg />
           {/* <AppFooter /> */}
         </section>
       </Router>
