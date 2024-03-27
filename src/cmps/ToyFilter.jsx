@@ -19,12 +19,12 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     return (
         <section className="toy-filter full main-layout">
             <form >
-                <label htmlFor="name">Name:</label>
+                <label htmlFor="txt">Name:</label>
                 <input type="text"
-                    id="name"
-                    name="name"
-                    placeholder="By name"
-                    value={filterByToEdit.name}
+                    id="txt"
+                    name="txt"
+                    placeholder="By text"
+                    value={filterByToEdit.txt}
                     onChange={handleChange}
                 />
                 
