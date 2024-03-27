@@ -8,3 +8,7 @@
     display: flex;
     gap: 15px;
 }
+
+.app-header a{
+    font-family: Arial, Helvetica, sans-serif;
+}

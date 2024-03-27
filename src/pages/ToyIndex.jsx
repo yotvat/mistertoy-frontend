@@ -20,7 +20,7 @@ export function ToyIndex() {
             .catch(err => {
                 showErrorMsg('Cannot load Toys!')
             })
-    }, [filterBy,sortBy])
+    }, [filterBy, sortBy])
 
     function onSetFilter(filterBy) {
         setFilterBy(filterBy)
@@ -43,14 +43,17 @@ export function ToyIndex() {
     return (
         <div className="toy-index">
             <main>
-                <Link to="/toy/edit"><button>Add Toy</button></Link>
-                <ToyFilter
-                    filterBy={filterBy}
-                    onSetFilter={onSetFilter}
-                />
-            <ToySort
-             onSetSort={onSetSort}
-              sortBy={sortBy} />
+                <Link to="/toy/edit"><button className="add-btn">Add Toy</button></Link>
+                <section className="filter-sort">
+
+                    <ToyFilter
+                        filterBy={filterBy}
+                        onSetFilter={onSetFilter}
+                    />
+                    <ToySort
+                        onSetSort={onSetSort}
+                        sortBy={sortBy} />
+                </section>
                 {!isLoading
                     ? <ToyList
                         toys={toys}
@@ -58,7 +61,6 @@ export function ToyIndex() {
                     />
                     : <div>Loading...</div>
                 }
-                <hr />
             </main>
         </div>
     )

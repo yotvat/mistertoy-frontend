@@ -2,3 +2,23 @@
 .toy-index{
     text-align: center;
 }
+.add-btn{
+    background-color: var(--clr2bg-light);
+    border: none;
+    padding: .5em;
+    border-radius: .3em;
+    margin: 1em 1em 1em 1em;
+    transition: .3s;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.add-btn:hover{
+    background-color: var(--clr4bg);
+    color: var(--clr1);
+    scale: 1.04;
+}
+
+.filter-sort{
+    background-color: var(--clr1bg-light);
+    border-radius: .5em;
+}

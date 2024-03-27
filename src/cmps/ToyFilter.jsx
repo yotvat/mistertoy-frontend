@@ -14,12 +14,11 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         value = type === 'number' ? +value : value
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
-
-    // console.log(filterByToEdit);
     return (
-        <section className="toy-filter full main-layout">
+        <section className="toy-filter-container flex full">
+            <h1>Filter by</h1>
             <form >
-                <label htmlFor="txt">Name:</label>
+                <label htmlFor="txt">Name: </label>
                 <input type="text"
                     id="txt"
                     name="txt"
@@ -27,8 +26,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     value={filterByToEdit.txt}
                     onChange={handleChange}
                 />
-                
-                <label htmlFor="maxPrice">Max price:</label>
+                <label htmlFor="maxPrice"> Max price: </label>
                 <input type="number"
                     id="maxPrice"
                     name="maxPrice"
@@ -36,7 +34,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     value={filterByToEdit.maxPrice || ''}
                     onChange={handleChange}
                 />
-                <label htmlFor="inStock">In stock</label>
+                <label htmlFor="inStock">In stock: </label>
                 <select onChange={handleChange} name="inStock" id="stock">
                     <option value="all">all</option>
                     <option value={true}>In stock</option>

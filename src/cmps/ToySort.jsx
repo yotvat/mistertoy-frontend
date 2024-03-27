@@ -16,21 +16,22 @@ export function ToySort({ onSetSort, sortBy }) {
   }
 
   return (
-    <section className="contact-sort">
+    <section className="sort-container flex">
       <h1>Sort by</h1>
       <select name="select-sort" id="select-sort" onChange={handleChange}>
         <option value="name">Name</option>
         <option value="price">price</option>
         <option value="created">Time of creation</option>
       </select>
-
-      <label htmlFor="sort-dir">Descending</label>
-      <input
-        type="checkbox"
-        name="sort-dir"
-        id="sort-dir"
-        onChange={handleChange}
-      />
+      <div className="dir-label-input">
+        <label htmlFor="sort-dir">Descending</label>
+        <input
+          type="checkbox"
+          name="sort-dir"
+          id="sort-dir"
+          onChange={handleChange}
+        />
+      </div>
     </section>
   )
 }

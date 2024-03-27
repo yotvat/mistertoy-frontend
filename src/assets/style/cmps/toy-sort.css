@@ -1,0 +1,7 @@
+.sort-container{
+    padding: 1em;
+    align-items: baseline;
+    gap: 3em;
+    color:  var(--clr4bg);
+    
+}

@@ -62,3 +62,12 @@ flex-wrap: wrap;
 .fa.fa-behance::before {
     content: "\f1b4";
 }
+
+.in-stock{
+    color: rgb(0, 162, 0);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.out-stock{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(238, 77, 77)
+}

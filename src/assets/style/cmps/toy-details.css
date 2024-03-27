@@ -1,0 +1,21 @@
+.toy-details{
+    background-color:var(--clr2bg-light);
+    width: 350px;
+    border-radius: .5em;
+    text-align: center;
+    margin: auto;
+    
+}
+
+.toy-details h2{
+    color: var(--clr5bg);
+    padding: .5em;
+}
+
+.toy-details button{
+    background-color: var(--clr1bg-light);
+}
+.toy-details button:hover{
+    background-color: var(--clr4bg);
+    color: var(--clr1);
+}

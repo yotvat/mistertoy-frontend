@@ -8,11 +8,21 @@ button {
 }
 
 button:hover {
-    background-color: var(--clr2);
-    color: white;
+    /* color: whitesmoke; */
     transition: .3s;
 }
+
 input:focus {
     background-color: var(--clr1bg);
     transition: background-color 1s;
+}
+
+input,select{
+    padding: 0.4em 0.4em;
+    border-radius: .5em;
+    border: 1px solid lightgray;
+}
+
+label{
+    font-family: Arial, Helvetica, sans-serif;
 }

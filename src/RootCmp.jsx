@@ -10,6 +10,7 @@ import { ToyEdit } from './pages/ToyEdit.jsx'
 import { ToyDetails } from './pages/ToyDetails.jsx'
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
+import { PriceChart } from './cmps/PriceChart.jsx'
 
 
 // import './App.css'
@@ -30,6 +31,7 @@ export function App() {
               <Route element={<ToyEdit />} path="/toy/edit" />
               <Route element={<ToyEdit />} path="/toy/edit/:toyId" />
               <Route element={<ToyDetails />} path="/toy/:toyId" />
+              <Route element={<PriceChart />} path="/dashboard" />
               {/* <Route element={<UserDetails />} path="/user/:userId" /> */}
             </Routes>
           </main>

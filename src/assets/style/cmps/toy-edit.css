@@ -1,0 +1,11 @@
+.toy-edit button{
+    background-color: var(--clr2bg-light);
+    padding: .5em;
+    border: none;
+    border-radius: .3em;
+    margin:.2em
+}
+.toy-edit button:hover{
+    background-color: var(--clr4bg);
+    color: var(--clr1);
+}

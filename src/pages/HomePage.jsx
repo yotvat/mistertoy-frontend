@@ -1,5 +1,7 @@
+import { PriceChart } from "../cmps/PriceChart"
 
 export function HomePage() {
-    return <h1>Hi from HomePage
+    // return  <PriceChart/>
+     <h1>Hi from HomePage
     </h1>
 }

@@ -1,0 +1,30 @@
+.preview-img{
+    max-width: 100px;
+}
+
+.toy-preview{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 1em;
+    padding: 1em;
+    background-color:var(--clr2bg-light);
+    border-radius: .5em;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: .4s;
+    
+    
+}
+.toy-preview button{
+    background-color: var(--clr1bg-light);
+    padding: .5em;
+    border: none;
+    border-radius: .3em;
+    margin:.2em
+}
+.toy-preview button:hover{
+    background-color: var(--clr4bg);
+    color: var(--clr1);
+}
+
+.toy-preview:hover{
+    scale: 1.04;
+}

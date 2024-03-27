@@ -9,7 +9,8 @@ export const toyService = {
     getEmptyToy,
     getDefaultFilter,
     getDefaultSort,
-    getLabels
+    getLabels,
+    calcAvgPricePerLabel
 }
 
 const labels = ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle", "Outdoor", "Battery Powered"]
@@ -54,3 +55,30 @@ function getDefaultFilter() {
 function getDefaultSort() {
     return { name: 1 }
 }
+
+
+function calcAvgPricePerLabel(toys, labels) {
+    const labelMap = {}
+    labels.forEach(label => {
+        labelMap[label] = { total: 0, count: 0 }
+    })
+
+    toys.forEach(toy => {
+        toy.labels.forEach(label => {
+            labelMap[label].total += toy.price;
+            labelMap[label].count++;
+        })
+    })
+
+    const averagePricePerLabel = {}
+    for (const label in labelMap) {
+        if (labelMap[label].count !== 0) {
+            averagePricePerLabel[label] = labelMap[label].total / labelMap[label].count
+        } else {
+            averagePricePerLabel[label] = 0
+        }
+    }
+
+    return averagePricePerLabel
+}
+

@@ -1,0 +1,13 @@
+.toy-filter-container {
+    /* width: 500px; */
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 1em;
+    align-items: baseline;
+    gap: 3em;
+    color: var(--clr4bg);
+}
+
+.toy-filter-container>* label{
+    margin-left: 1em;
+}

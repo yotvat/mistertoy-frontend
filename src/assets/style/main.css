@@ -6,6 +6,7 @@
 @import 'base/base.css';
 @import 'base/helpers.css';
 @import 'base/layout.css';
+@import 'base/forms.css';
 
 
 /* Components */
@@ -13,6 +14,11 @@
 @import 'cmps/app-header.css';
 @import 'cmps/toy-list.css';
 @import 'cmps/toy-preview.css';
+@import 'cmps/price-chart.css';
+@import 'cmps/toy-filter.css';
+@import 'cmps/toy-sort.css';
+@import 'cmps/toy-details.css';
+@import 'cmps/toy-edit.css';
 
 
 
