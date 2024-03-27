@@ -8,6 +8,7 @@ export function ToyPreview({ toy }) {
             <img className="preview-img" src={`https://robohash.org/${toy.name}`} alt="" />
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>
             <p className={toy.inStock? "in-stock":'out-stock'}>{toy.inStock ? "In Stock!" : 'not available..'}</p>
+            <h5>No Ranking yet</h5>
         </article>
     )
 }

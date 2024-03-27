@@ -1,10 +1,12 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export function AppHeader() {
 
     return (
         <header className="app-header full main-layout flex justify-between align-center">
-            <h1>Mister Toy</h1>
+            <Link to="/toy">
+                <h1>Mister Toy</h1>
+            </Link>
             <nav className="app-nav">
                 <NavLink to="/" >Home</NavLink>
                 <NavLink to="/about" >About</NavLink>
