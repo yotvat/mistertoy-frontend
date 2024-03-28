@@ -5,13 +5,13 @@ export function ToySort({ onSetSort, sortBy }) {
     let { type, value } = target
     if (type === 'select-one') {
       const currDir = Object.values(sortBy)[0]
-      onSetSort({ [value]: currDir || 1 })
+      onSetSort({ type: value, dir: currDir || 1 })
     }
 
     if (type === 'checkbox') {
       const currSort = Object.keys(sortBy)[0]
       const dir = sortBy[currSort] === 1 ? -1 : 1
-      onSetSort({ [currSort]: dir })
+      onSetSort({ type: [currSort], dir })
     }
   }
 

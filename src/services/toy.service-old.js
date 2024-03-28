@@ -37,16 +37,9 @@ function query(filterBy = {}, sortBy = {}) {
             }
 
             //sort
-            if (sortBy.name) {
-                toysToReturn = toysToReturn.sort((t1, t2) => (t1.name.localeCompare(t2.name)) * sortBy.name)
-            }
-
-            if (sortBy.price) {
-                toysToReturn = toysToReturn.sort((t1, t2) => (t1.price - t2.price) * sortBy.price)
-            }
-            if (sortBy.created) {
-                toysToReturn = toysToReturn.sort((t1, t2) => (t1.createdAt - t2.createdAt) * sortBy.created)
-            }
+            if (sortBy.type === 'name') toys.sort((toy1, toy2) => (toy1.name.localeCompare(toy2.name)) * sortBy.dir)
+            if (sortBy.type === 'price') toys.sort((toy1, toy2) => (toy1.price - toy2.price) * sortBy.dir)
+            if (sortBy.type === 'created') toys.sort((toy1, toy2) => (toy1.createdAt - toy2.createdAt) * sortBy.dir)
 
             return toysToReturn
         })
