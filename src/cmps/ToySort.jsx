@@ -4,14 +4,17 @@ export function ToySort({ onSetSort, sortBy }) {
   function handleChange({ target }) {
     let { type, value } = target
     if (type === 'select-one') {
-      const currDir = Object.values(sortBy)[0]
+      const currDir = sortBy.dir
       onSetSort({ type: value, dir: currDir || 1 })
     }
 
+
     if (type === 'checkbox') {
       const currSort = Object.keys(sortBy)[0]
+      // const dir = sortBy[currSort] === 1 ? -1 : 1
       const dir = sortBy[currSort] === 1 ? -1 : 1
-      onSetSort({ type: [currSort], dir })
+      console.log(sortBy);
+      onSetSort(sortBy)
     }
   }
 

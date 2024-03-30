@@ -29,8 +29,9 @@ export function ToyIndex() {
         setFilterBy(filterBy)
     }
 
-    function onSetSort(type) {
+    function onSetSort({type}) {
         setSortBy({ type, dir: -sortBy.dir })
+
     }
 
     function onRemoveToy(toyId) {
@@ -59,7 +60,7 @@ export function ToyIndex() {
                 <Link to="/toy/edit"><button className="add-btn">Add Toy</button></Link>
                 {!loggedInUser && <LoginSignup />}
                 {loggedInUser && <pre>hello, <span>{loggedInUser.fullname} ,What would you like to do today?</span>
-                    
+
                 </pre>}
                 <section className="filter-sort">
 
