@@ -26,7 +26,7 @@ export function ToyEdit() {
     }
 
     function handleChange({ target }) {
-        let { value, type, name: field,checked } = target
+        let { value, checked,type, name: field } = target
         value = type === 'number' ? +value : value
         setToyToEdit((prevToy) => ({ ...prevToy, [field]: value }))
 
@@ -39,15 +39,6 @@ export function ToyEdit() {
             return
         }
     }
-
-    // function handleLabelChange({ target }) {
-    //     const labels = toyToEdit.labels
-    //     if (labels.indexOf(target.value) === -1) setToyToEdit(prevToy => ({ ...prevToy, labels: [...prevToy.labels, target.value] }))
-    //     else {
-    //         const updatedLabels = toyToEdit.labels.filter(label => label !== target.value)
-    //         setToyToEdit(prevToy => ({ ...prevToy, labels: updatedLabels }))
-    //     }
-    // }
 
     function onSaveToy(ev) {
         ev.preventDefault()

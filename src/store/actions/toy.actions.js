@@ -1,7 +1,7 @@
 import { toyService } from "../../services/toy.service.js";
-import { showSuccessMsg } from "../../services/event-bus.service.js";
+import { showErrorMsg, showSuccessMsg } from "../../services/event-bus.service.js";
 
-import { ADD_TOY, REMOVE_TOY, SET_FILTER_BY, SET_IS_LOADING, SET_SORT_BY, SET_TOYS, TOY_UNDO, UPDATE_TOY } from "../reducers/toy.reducer.js";
+import { ADD_MSG, ADD_TOY, REMOVE_MSG, REMOVE_TOY, SET_FILTER_BY, SET_IS_LOADING, SET_SORT_BY, SET_TOYS, TOY_UNDO, UPDATE_TOY } from "../reducers/toy.reducer.js";
 import { store } from "../store.js";
 
 export function loadToys() {
@@ -46,7 +46,6 @@ export function removeToyOptimistic(toyId) {
 }
 
 export function saveToy(toy) {
-    console.log('toy',toy)
     const type = toy._id ? UPDATE_TOY : ADD_TOY
     return toyService.save(toy)
         .then(savedToy => {
@@ -58,6 +57,30 @@ export function saveToy(toy) {
             console.log('toy action -> Cannot save toy', err)
             throw err
         })
+}
+
+
+export async function addMsg(txt, toyId) {
+    try {
+        const msg = await toyService.addMsg({ txt }, toyId)
+        store.dispatch({ type: ADD_MSG, toyId, msg })
+        return msg
+    } catch (err) {
+        console.log('toy action -> Cannot add message', err)
+        throw err
+    }
+}
+
+export async function removeMsg(toyId, msgId) {
+    try {
+        const messageId = await toyService.removeMsg(toyId, msgId)
+        store.dispatch({ type: REMOVE_MSG, toyId, msgId })
+        return messageId
+    } catch (err) {
+        showErrorMsg(err)
+        throw err
+    }
+
 }
 
 export function setFilterBy(filterBy) {

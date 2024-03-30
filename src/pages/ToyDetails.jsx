@@ -3,6 +3,7 @@ import { toyService } from "../services/toy.service"
 import { useParams } from "react-router"
 import { utilService } from "../services/util.service"
 import { Link } from "react-router-dom"
+import { ToyMsg } from "../cmps/ToyMsg"
 // import ObjectId  from 'mongodb'
 
 
@@ -24,6 +25,10 @@ export function ToyDetails() {
             })
     }
 
+
+
+
+
     if (!toy) return <div>Loading...</div>
     return (
         <section className="toy-details">
@@ -34,9 +39,13 @@ export function ToyDetails() {
             <h4>created at: {utilService.formatDate(utilService.extractTime(toy._id))}</h4>
             <h5>labels - {toy.labels.join(', ')}</h5>
             <p className={toy.inStock ? "in-stock" : 'out-stock'}>{toy.inStock ? `We have ${toy.name} in stock!` : `${toy.name} is not available..`}</p>
+            
+            <ToyMsg 
+            setToy={setToy}
+            toy={toy}/>
 
-            <Link to={`/toy/edit/${toy._id}`}><button>Edit</button></Link> &nbsp;
+            <Link to={`/toy/edit/${toy._id}`}><button>Edit</button></Link>
             <Link to={`/toy`}><button>Back</button></Link>
-        </section>
+        </section >
     )
 }

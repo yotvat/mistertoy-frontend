@@ -14,6 +14,9 @@ export const TOY_UNDO = 'TOY_UNDO'
 // export const REMOVE_TOY_FROM_CART = 'REMOVE_TOY_FROM_CART'
 // export const CLEAR_CART = 'CLEAR_CART'
 
+export const ADD_MSG = 'ADD_MSG'
+export const REMOVE_MSG = 'REMOVE_MSG'
+
 export const SET_FILTER_BY = 'SET_FILTER_BY'
 export const SET_SORT_BY = 'SET_SORT_BY'
 
@@ -21,13 +24,12 @@ export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 const initialState = {
     toys: [],
-    // isCartShown: false,
-    // shoppingCart: [],
+
     isLoading: false,
     filterBy: toyService.getDefaultFilter(),
     sortBy: toyService.getDefaultSort()
 
-    // lastToys: []
+
 }
 
 export function toyReducer(state = initialState, action = {}) {
@@ -54,7 +56,7 @@ export function toyReducer(state = initialState, action = {}) {
                 toys: state.toys.map(toy => toy._id === action.toy._id ? action.toy : toy)
             }
 
-   
+
         case SET_FILTER_BY:
             return {
                 ...state,
@@ -76,7 +78,15 @@ export function toyReducer(state = initialState, action = {}) {
                 ...state,
                 toys: [...state.lastToys]
             }
-
+        case ADD_MSG:
+            return {
+                ...state,
+                toys: state.toys.map(toy => toy._id === action.toyId ? { ...toy, msgs: [...toy.msgs, action.msg] } : toy)
+            }
+        case REMOVE_MSG:
+            return {
+                ...state, toys: state.toys.map(toy =>toy._id === action.toyId ? toy.msgs.filter(msg => msg.id !== action.msgId) : toy)
+            }
 
         default:
             return state
