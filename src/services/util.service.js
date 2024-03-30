@@ -8,7 +8,8 @@ export const utilService = {
     generateRandomLabels,
     formatDate,
     animateCSS,
-    debounce
+    debounce,
+    extractTime
 }
 
 function makeId(length = 6) {
@@ -107,4 +108,10 @@ function generateRandomLabels() {
         }
     }
     return [labels[randomIndexes[0]], labels[randomIndexes[1]]];
+}
+
+function extractTime(toyId) {
+    // Extract timestamp from toy_id
+    const timestamp = new Date(parseInt(toyId.substring(0, 8), 16) * 1000);
+    return timestamp;
 }

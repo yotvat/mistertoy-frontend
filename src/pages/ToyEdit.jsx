@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { toyService } from "../services/toy.service"
 import { saveToy } from "../store/actions/toy.actions"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
+import { LabelSelect } from "../cmps/LabelSelect"
 
 
 export function ToyEdit() {
@@ -25,12 +26,12 @@ export function ToyEdit() {
     }
 
     function handleChange({ target }) {
-        let { value, type, name: field } = target
+        let { value, type, name: field,checked } = target
         value = type === 'number' ? +value : value
         setToyToEdit((prevToy) => ({ ...prevToy, [field]: value }))
 
         if (type === 'checkbox') {
-            if (value === 'checked') {
+            if (checked) {
                 setToyToEdit((prev) => ({ ...prev, inStock: true }))
             } else {
                 setToyToEdit((prev) => ({ ...prev, inStock: false }))
@@ -39,14 +40,14 @@ export function ToyEdit() {
         }
     }
 
-    function handleLabelChange({ target }) {
-        const labels = toyToEdit.labels
-        if (labels.indexOf(target.value) === -1) setToyToEdit(prevToy => ({ ...prevToy, labels: [...prevToy.labels, target.value] }))
-        else {
-            const updatedLabels = toyToEdit.labels.filter(label => label !== target.value)
-            setToyToEdit(prevToy => ({ ...prevToy, labels: updatedLabels }))
-        }
-    }
+    // function handleLabelChange({ target }) {
+    //     const labels = toyToEdit.labels
+    //     if (labels.indexOf(target.value) === -1) setToyToEdit(prevToy => ({ ...prevToy, labels: [...prevToy.labels, target.value] }))
+    //     else {
+    //         const updatedLabels = toyToEdit.labels.filter(label => label !== target.value)
+    //         setToyToEdit(prevToy => ({ ...prevToy, labels: updatedLabels }))
+    //     }
+    // }
 
     function onSaveToy(ev) {
         ev.preventDefault()
@@ -76,6 +77,7 @@ export function ToyEdit() {
                     value={toyToEdit.name}
                     onChange={handleChange}
                 />
+
                 <label htmlFor="price">Price : </label>
                 <input type="number"
                     name="price"
@@ -84,7 +86,11 @@ export function ToyEdit() {
                     value={toyToEdit.price}
                     onChange={handleChange}
                 />
-                <select multiple value={toyToEdit.labels} onChange={handleLabelChange}>
+
+                <LabelSelect toyToEdit={toyToEdit}
+                    setToyToEdit={setToyToEdit} />
+
+                {/* <select multiple value={toyToEdit.labels} onChange={handleLabelChange}>
                     <option value="On-wheels">On-wheels</option>
                     <option value="Box-game">Box-game</option>
                     <option value="Art">Art</option>
@@ -92,14 +98,14 @@ export function ToyEdit() {
                     <option value="Puzzle">Puzzle</option>
                     <option value="Outdoor">Outdoor</option>
                     <option value="Battery-powered">Battery-powered</option>
-                </select>
+                </select> */}
 
                 <label htmlFor="inStock">in stock?</label>
                 <input type="checkbox"
                     name="inStock"
                     id="inStock"
-                    value={toyToEdit.inStock ? 'unchecked' : 'checked'}
                     onChange={handleChange}
+                    checked={toyToEdit.inStock}
                 />
                 <div>
                     <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
