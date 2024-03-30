@@ -64,9 +64,9 @@ function calcAvgPricePerLabel(toys, labels) {
     labels.forEach(label => {
         labelMap[label] = { total: 0, count: 0 }
     })
-
     toys.forEach(toy => {
         toy.labels.forEach(label => {
+            if(!labelMap[label]) return
             labelMap[label].total += toy.price;
             labelMap[label].count++;
         })

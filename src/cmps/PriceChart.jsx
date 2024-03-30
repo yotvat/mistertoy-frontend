@@ -3,6 +3,9 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { toyService } from '../services/toy.service';
 import { useSelector } from 'react-redux';
+import { loadToys } from '../store/actions/toy.actions';
+import { useEffect } from 'react';
+import { showErrorMsg } from '../services/event-bus.service';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -11,6 +14,14 @@ export function PriceChart() {
     if (!toys) return <h1>no data</h1>
     const labels = toyService.getLabels()
     const pricePerLabelMap = toyService.calcAvgPricePerLabel(toys, labels)
+
+    useEffect(() => {
+        loadToys()
+            .catch(err => {
+                showErrorMsg('error loading')
+            })
+
+    }, [])
 
     const data = {
         labels: Object.keys(pricePerLabelMap),

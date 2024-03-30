@@ -46,10 +46,12 @@ export function removeToyOptimistic(toyId) {
 }
 
 export function saveToy(toy) {
+    console.log('toy',toy)
     const type = toy._id ? UPDATE_TOY : ADD_TOY
     return toyService.save(toy)
         .then(savedToy => {
             store.dispatch({ type, toy: savedToy })
+            // console.log('svaedToy',savedToy)
             return savedToy
         })
         .catch(err => {

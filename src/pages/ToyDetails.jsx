@@ -21,7 +21,7 @@ export function ToyDetails() {
                 navigate('/toy')
             })
     }
-
+    
     if (!toy) return <div>Loading...</div>
     return (
         <section className="toy-details">
@@ -30,7 +30,7 @@ export function ToyDetails() {
             <img src={`https://robohash.org/${toy.name}`} alt="" />
             <h4>created at: {utilService.formatDate(toy.createdAt)}</h4>
             <h5>labels - {toy.labels.join(', ')}</h5>
-            <p className={toy.inStock? "in-stock":'out-stock'}>{toy.inStock ? `We have ${toy.name} in stock!` : `${toy.name} is not available..`}</p>
+            <p className={toy.inStock ? "in-stock" : 'out-stock'}>{toy.inStock ? `We have ${toy.name} in stock!` : `${toy.name} is not available..`}</p>
 
             <Link to={`/toy/edit/${toy._id}`}><button>Edit</button></Link> &nbsp;
             <Link to={`/toy`}><button>Back</button></Link>

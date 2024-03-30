@@ -29,14 +29,23 @@ export function ToyEdit() {
         value = type === 'number' ? +value : value
         setToyToEdit((prevToy) => ({ ...prevToy, [field]: value }))
 
-        // if (type === 'checkbox') {
-        //     if (value === 'checked') {
-        //         setToyToEdit((prev) => ({ ...prev, inStock: true }))
-        //     } else {
-        //         setToyToEdit((prev) => ({ ...prev, inStock: false }))
-        //     }
-        //     return
-        // }
+        if (type === 'checkbox') {
+            if (value === 'checked') {
+                setToyToEdit((prev) => ({ ...prev, inStock: true }))
+            } else {
+                setToyToEdit((prev) => ({ ...prev, inStock: false }))
+            }
+            return
+        }
+    }
+
+    function handleLabelChange({ target }) {
+        const labels = toyToEdit.labels
+        if (labels.indexOf(target.value) === -1) setToyToEdit(prevToy => ({ ...prevToy, labels: [...prevToy.labels, target.value] }))
+        else {
+            const updatedLabels = toyToEdit.labels.filter(label => label !== target.value)
+            setToyToEdit(prevToy => ({ ...prevToy, labels: updatedLabels }))
+        }
     }
 
     function onSaveToy(ev) {
@@ -44,7 +53,7 @@ export function ToyEdit() {
         if (!toyToEdit.price) toyToEdit.price = 100
         saveToy(toyToEdit)
             .then(() => {
-                console.log();
+                // console.log(toyToEdit);
                 showSuccessMsg('toy Saved!')
                 navigate('/toy')
             })
@@ -75,13 +84,23 @@ export function ToyEdit() {
                     value={toyToEdit.price}
                     onChange={handleChange}
                 />
-                {/* <label htmlFor="inStock">in stock?</label>
+                <select multiple value={toyToEdit.labels} onChange={handleLabelChange}>
+                    <option value="On-wheels">On-wheels</option>
+                    <option value="Box-game">Box-game</option>
+                    <option value="Art">Art</option>
+                    <option value="Doll">Doll</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="Battery-powered">Battery-powered</option>
+                </select>
+
+                <label htmlFor="inStock">in stock?</label>
                 <input type="checkbox"
                     name="inStock"
                     id="inStock"
                     value={toyToEdit.inStock ? 'unchecked' : 'checked'}
                     onChange={handleChange}
-                /> */}
+                />
                 <div>
                     <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
                     <Link to="/toy"><button>Cancel</button></Link>
