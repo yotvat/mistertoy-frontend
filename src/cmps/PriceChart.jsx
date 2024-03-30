@@ -8,7 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function PriceChart() {
     const toys = useSelector(storeState => storeState.toyModule.toys)
-    if (!toys) return
+    if (!toys) return <h1>no data</h1>
     const labels = toyService.getLabels()
     const pricePerLabelMap = toyService.calcAvgPricePerLabel(toys, labels)
 

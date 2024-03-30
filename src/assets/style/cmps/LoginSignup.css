@@ -1,0 +1,29 @@
+.login-actions button{
+    background-color: var(--clr2bg-light);
+    padding: .5em;
+    border: none;
+    border-radius: .3em;
+    margin:.2em
+}
+
+.login-actions button:hover{
+    background-color: var(--clr4bg);
+    color: var(--clr1);
+}
+
+
+.login-actions a{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-signup-btn, .logout-btn{
+    background-color: var(--clr2bg-light);
+    padding: .5em;
+    border: none;
+    border-radius: .3em;
+    margin:.2em
+}
+.login-signup-btn, .logout-btn:hover{
+    background-color: var(--clr4bg);
+    color: var(--clr1);
+}

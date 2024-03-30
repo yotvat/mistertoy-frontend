@@ -51,3 +51,7 @@ a.active {
 button:hover{
   cursor: pointer;
 }
+
+pre{
+  font-family: Arial, Helvetica, sans-serif;
+}
