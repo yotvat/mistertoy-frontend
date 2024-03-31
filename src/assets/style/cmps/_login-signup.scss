@@ -1,0 +1,38 @@
+.login-actions {
+
+       button {
+        background-color: $clr6;
+        padding: .5em;
+        border: none;
+        border-radius: .3em;
+        margin: .2em;
+        transition: .2s;
+
+        &:hover {
+            background-color: $clr7;
+            color: $clr3;
+        }
+    }
+
+
+     a {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+}
+
+
+
+.login-signup-btn,
+.logout-btn {
+    background-color: $clr6;
+    padding: .5em;
+    border: none;
+    border-radius: .3em;
+    margin: .2em;
+
+    &:hover {
+        background-color: $clr7;
+        color: $clr3;
+    }
+}

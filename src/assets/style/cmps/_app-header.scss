@@ -1,0 +1,14 @@
+.app-header {
+    background-color: $clr1;
+    color: $clr3;
+    padding-block: 1em;
+
+    & .app-nav {
+        display: flex;
+        gap: 15px;
+    }
+
+    & a {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}

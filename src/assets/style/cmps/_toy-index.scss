@@ -1,0 +1,24 @@
+.toy-index {
+    text-align: center;
+
+    & .add-btn {
+        background-color: $clr6;
+        border: none;
+        padding: .5em;
+        border-radius: .3em;
+        margin: 1em 1em 1em 1em;
+        transition: .3s;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+        &:hover {
+            background-color: $clr7;
+            color: $clr1;
+            scale: 1.04;
+        }
+    }
+
+    & .filter-sort {
+        background-color: $clr4;
+        border-radius: .5em;
+    }
+}

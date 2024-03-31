@@ -1,0 +1,21 @@
+.toy-details {
+    background-color: $clr6;
+    width: 350px;
+    border-radius: .5em;
+    text-align: center;
+    margin: auto;
+
+    & h2 {
+        color: $clr8;
+        padding: .5em;
+    }
+
+    & button {
+        background-color: var($clr4);
+
+        & :hover {
+            background-color: $clr7;
+            color: $clr1;
+        }
+    }
+}
