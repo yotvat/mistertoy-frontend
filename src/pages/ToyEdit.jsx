@@ -45,7 +45,6 @@ export function ToyEdit() {
         if (!toyToEdit.price) toyToEdit.price = 100
         saveToy(toyToEdit)
             .then(() => {
-                // console.log(toyToEdit);
                 showSuccessMsg('toy Saved!')
                 navigate('/toy')
             })

@@ -13,7 +13,6 @@ export function ToySort({ onSetSort, sortBy }) {
       const currSort = Object.keys(sortBy)[0]
       // const dir = sortBy[currSort] === 1 ? -1 : 1
       const dir = sortBy[currSort] === 1 ? -1 : 1
-      console.log(sortBy);
       onSetSort(sortBy)
     }
   }
