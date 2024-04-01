@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { toyService } from "../services/toy.service"
-import { useParams } from "react-router"
+import { Navigate, useNavigate, useParams } from "react-router"
 import { utilService } from "../services/util.service"
 import { Link } from "react-router-dom"
 import { ToyMsg } from "../cmps/ToyMsg"
@@ -11,6 +11,7 @@ import { ToyMsg } from "../cmps/ToyMsg"
 export function ToyDetails() {
     const [toy, setToy] = useState(null)
     const { toyId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (toyId) loadToy()

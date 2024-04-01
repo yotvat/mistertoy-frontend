@@ -45,13 +45,13 @@ export function ToyMsg({ toy, setToy }) {
                 )
             }
         </ul>}
-        <form onSubmit={onSubmitMsg}>
+        {loggedInUser && <form onSubmit={onSubmitMsg}>
             <input type="text"
                 placeholder="Enter a message"
                 onChange={onChangeMsg}
             />
             <button>submit</button>
-        </form>
+        </form>}
 
     </div>
 }

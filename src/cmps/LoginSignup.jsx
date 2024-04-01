@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { LoginForm } from "./LoginForm"
 import { login, signup } from "../store/actions/user.actions"
-import { showErrorMsg } from "../services/event-bus.service"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service"
 
 
 export function LoginSignup() {
@@ -14,7 +14,7 @@ export function LoginSignup() {
     async function _login(credentials) {
         try {
             await login(credentials)
-            console.log('loggedInSuccessfully');
+            showSuccessMsg('logged in successfully')
         } catch (err) {
             showErrorMsg('big balagan', err)
         }
