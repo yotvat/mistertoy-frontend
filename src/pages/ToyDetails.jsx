@@ -4,6 +4,7 @@ import { Navigate, useNavigate, useParams } from "react-router"
 import { utilService } from "../services/util.service"
 import { Link } from "react-router-dom"
 import { ToyMsg } from "../cmps/ToyMsg"
+import { ToyReview } from "../cmps/ToyReview"
 // import ObjectId  from 'mongodb'
 
 
@@ -44,6 +45,8 @@ export function ToyDetails() {
             <ToyMsg 
             setToy={setToy}
             toy={toy}/>
+
+            <ToyReview toy={toy}/>
 
             <Link to={`/toy/edit/${toy._id}`}><button>Edit</button></Link>
             <Link to={`/toy`}><button>Back</button></Link>

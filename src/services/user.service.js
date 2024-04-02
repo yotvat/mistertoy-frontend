@@ -10,6 +10,7 @@ export const userService = {
     logout,
     signup,
     getById,
+    getUsers,
     getLoggedinUser,
     updateScore,
     getEmptyCredentials
@@ -52,7 +53,10 @@ function updateScore(diff) {
         })
 }
 
-
+function getUsers() {
+    // return storageService.query('user')
+    return httpService.get(`user`)
+}
 
 function getById(userId) {
     return httpService.get('user/' + userId)

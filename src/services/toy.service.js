@@ -54,17 +54,17 @@ function getEmptyToy() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '', inStock: 'all' }
+    return { txt: '', maxPrice: '', inStock: 'all', labels: [] }
 }
 
 function getDefaultSort() {
     return { type: 'name', dir: 1 }
 }
 
-function addMsg(msg,toyId) {
+function addMsg(msg, toyId) {
     return httpService.post(`toy/${toyId}/msg`, msg)
 }
-function removeMsg(toyId,msgId) {
+function removeMsg(toyId, msgId) {
     return httpService.delete(`toy/${toyId}/msg/${msgId}`)
 }
 

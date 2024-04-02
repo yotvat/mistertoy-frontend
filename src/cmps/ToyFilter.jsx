@@ -28,7 +28,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
 
     }
-    console.log(filterByToEdit);
+    // console.log(filterByToEdit);
     return (
         <section className="toy-filter-container flex full">
             <h1>Filter by</h1>
